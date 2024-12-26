@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} {% endblock title %} Ridham Ice Creaam</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #f2f2f2;
+        }
+        .alert-yellow {
+            background-color: lightgreen;
+          }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/home">Ridham Ice Creaam</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>     
+    </header>
+    {% if messages %}
+    {% for message in messages%}
+    <div class="alert alert-{{message.tags}} alert-yellow alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
+    {% endif %}
+    
+    {% block body%} {% endblock body %}
+</body>
+</html>
+
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index page</title>
+</head>
+<body>
+    <h1>hello welcome to my website guysss....</h1>
+    <h3>hello ye lo mera hindi grammer ma homework ee ma'am.....
+    this is my first website using "Djangpo". </h3>
+    how to make variable  : ana mate views ma context ma variable : " lakhvanu " and pachhi html ni file ma double curly braces ma variable lakhavnu jethi "lakhvanu" jashe... <br>
+    This i svariable 1 : <b>{{ variable1}} </b><br>
+    variable 2 : {{variable2}}
+</body>
+</html> {% endcomment %}

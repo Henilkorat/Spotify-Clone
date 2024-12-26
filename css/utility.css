@@ -1,0 +1,81 @@
+.border{
+    border: 2px solid red;
+    margin: 3px;
+}
+.flex{
+    display: flex;
+}
+.justify-center{
+    justify-content: center;}
+
+.align-center{
+    align-items: center;
+}
+
+.bg-black{
+    background-color: black;
+    color: white;
+}
+
+.invert{
+    filter: invert(1);
+}
+
+.bg-grey{
+    background-color: #121212;
+}
+.rounded{
+    border-radius: 8px !important;
+}
+
+.m-1{
+    margin: 10px;
+
+}
+.p-1{
+    padding: 10px;
+}
+.sp-bet{
+    justify-content: space-between;
+}  
+
+::-webkit-scrollbar {
+    width: 12px; /* width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1e1e1e; /* dark background for the track */
+    border-radius: 10px; /* round scrollbar track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #555; /* dark color for the thumb */
+    border-radius: 10px; /* round scrollbar thumb */
+    border: 2px solid #1e1e1e; /* gives some spacing around the thumb */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #333; /* darker color on hover */
+  }
+  
+  /* For Firefox */
+  body {
+    scrollbar-width: thin; /* sets the width to thin */
+    scrollbar-color: #555 #1e1e1e; /* sets the thumb and track color */
+  }
+  
+  body::-webkit-scrollbar-track {
+    border-radius: 10px; /* round scrollbar track */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    border-radius: 10px; /* round scrollbar thumb */
+  }
+  
+  
+/* ---------------------------------------------------- */
+
+
+
+
+/* For webkit-based browsers (Chrome, Safari) */
