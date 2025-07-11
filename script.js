@@ -14,39 +14,19 @@ function convertSecondsToMinutes(seconds) {
 
 async function getSongs(folder) {
     currFolder = folder;
-    let response = await fetch(`/${folder}/`);
-    let text = await response.text();
 
-    // Parse the HTML response into a DOM object
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(text, 'text/html');
+    let response = await fetch(`/${folder}/songs.json`);
+    songs = await response.json();
 
-    let as = doc.getElementsByTagName("a"); // Use 'doc' to refer to the parsed HTML
-  songs = [];
-
-    // Iterate through all <a> elements and collect .mp3 links
-    for (let index = 0; index < as.length; index++) {
-        const element = as[index];
-        if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split(`/${folder}/`)[1]);
-        }
-    }
-
-    // Update the DOM with the song list
     let element = document.querySelector('.songlist');
-    
-    if (!element) return []; // Ensure element exists
+    if (!element) return [];
 
-    let songUL = element.getElementsByTagName('ul')[0];
-    
-    if (!songUL) return []; // Ensure <ul> exists
+    let songUL = element.querySelector('ul');
+    if (!songUL) return [];
 
-    // Clear the existing list
     songUL.innerHTML = "";
 
-    // Populate the list with songs
     for (const song of songs) {
-        // Skip songs that start with a space (if that's your requirement)
         if (!song.startsWith(' ')) {
             songUL.innerHTML += `
                 <li>
@@ -60,16 +40,76 @@ async function getSongs(folder) {
         }
     }
 
-    // Add click event listeners to each <li> element in the list
     Array.from(songUL.getElementsByTagName("li")).forEach(e => {
         e.addEventListener("click", () => {
             let songName = e.querySelector(".info").firstElementChild.innerHTML.trim();
-            playmusic(songName); // Assuming 'playmusic' is a defined function
+            playmusic(songName);
         });
     });
 
-    return songs; // Return the list of songs
+    return songs;
 }
+
+
+
+// async function getSongs(folder) {
+//     currFolder = folder;
+//     let response = await fetch(`/${folder}/`);
+//     let text = await response.text();
+
+//     // Parse the HTML response into a DOM object
+//     const parser = new DOMParser();
+//     const doc = parser.parseFromString(text, 'text/html');
+
+//     let as = doc.getElementsByTagName("a"); // Use 'doc' to refer to the parsed HTML
+//   songs = [];
+
+//     // Iterate through all <a> elements and collect .mp3 links
+//     for (let index = 0; index < as.length; index++) {
+//         const element = as[index];
+//         if (element.href.endsWith(".mp3")) {
+//             songs.push(element.href.split(`/${folder}/`)[1]);
+//         }
+//     }
+
+//     // Update the DOM with the song list
+//     let element = document.querySelector('.songlist');
+    
+//     if (!element) return []; // Ensure element exists
+
+//     let songUL = element.getElementsByTagName('ul')[0];
+    
+//     if (!songUL) return []; // Ensure <ul> exists
+
+//     // Clear the existing list
+//     songUL.innerHTML = "";
+
+//     // Populate the list with songs
+//     for (const song of songs) {
+//         // Skip songs that start with a space (if that's your requirement)
+//         if (!song.startsWith(' ')) {
+//             songUL.innerHTML += `
+//                 <li>
+//                     <img src="Assets/music.svg" class="invert" alt="music">
+//                     <div class="info">
+//                         <div>${song}</div>
+//                         <div>Artist</div>
+//                     </div>
+//                     <img src="Assets/play.svg" class="listplay invert" alt="play">
+//                 </li>`;
+//         }
+//     }
+
+//     // Add click event listeners to each <li> element in the list
+//     Array.from(songUL.getElementsByTagName("li")).forEach(e => {
+//         e.addEventListener("click", () => {
+//             let songName = e.querySelector(".info").firstElementChild.innerHTML.trim();
+//             playmusic(songName); // Assuming 'playmusic' is a defined function
+//         });
+//     });
+
+//     return songs; // Return the list of songs
+// }
 
 
 
