@@ -358,4 +358,7 @@ margin: 0px 15px;
   .header{
     height: 7vh;
   }
+  .buttons{
+    display: none;
+  }
   }
